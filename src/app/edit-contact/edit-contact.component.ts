@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '../shared/models/contact';
 import { ContactService } from '../shared/services/contact.service';
 
@@ -15,8 +15,11 @@ export class EditContactComponent implements OnInit {
 
   constructor(
     private contactService: ContactService,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private route: Router
   ) { }
+
+  public contacts;
 
   contactForm = new FormGroup({
     name: new FormControl(null, [Validators.required]),
@@ -24,19 +27,25 @@ export class EditContactComponent implements OnInit {
     type: new FormControl('pessoal', [Validators.required])
   }); 
 
-  index = Number(this.route.snapshot.paramMap.get('id'));
+  index = Number(this.activatedRoute.snapshot.paramMap.get('id'));
 
   ngOnInit(): void {
-    let contacts = this.contactService.getContacts();
-    this.contact = contacts.splice(this.index, 1);
-
-    console.log(this.contact);
+    this.contacts = this.contactService.getContacts();
+    this.contact = this.contacts.splice(this.index, 1);
 
     this.contactForm.patchValue({
-      name: this.contact.name,
-      type: this.contact.type,
-      phone: this.contact.phone
+      name: this.contact[0].name,
+      type: this.contact[0].type,
+      phone: this.contact[0].phone
     });
+
+  }
+
+  editContact() {
+    let newContact = this.contactForm.value;
+    this.contacts.push(newContact);
+    this.contactService.editContact(this.contacts);
+    this.route.navigate(['']);
 
   }
 

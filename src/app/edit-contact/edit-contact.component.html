@@ -9,7 +9,7 @@
 
                     <div class="form-group">
                         <label for="type">Tipo de Contato</label>
-                        <select class="form-control" name="type" id="type">
+                        <select class="form-control" formControlName="type" name="type" id="type">
                             <option value="pessoal">Pessoal</option>
                             <option value="profissional">Profissional</option>
                           </select>
@@ -17,18 +17,18 @@
 
                     <div class="form-group">
                       <label for="name">Nome</label>
-                      <input type="text" class="form-control" id="name" placeholder="Digite o nome...">
+                      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Digite o nome...">
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Telefone</label>
-                        <input type="phone" class="form-control" id="phone"  placeholder="Digite o telefone...">
+                        <input type="phone" class="form-control" formControlName="phone" id="phone"  placeholder="Digite o telefone...">
                     </div>
                     
                   </form>
 
                 <div class="text-center padding-top padding-bottom">
-                    <button type="button" class="btn btn-success margin-right"><i class="fas fa-plus"></i> Adicionar Contato</button>
+                    <button type="button" class="btn btn-success margin-right" (click)="editContact()"><i class="fas fa-plus"></i> Editar Contato</button>
                     <button type="button" class="btn btn-primary" routerLink="/contacts"><i class="fas fa-arrow-left"></i> Voltar</button>
                 </div>
 

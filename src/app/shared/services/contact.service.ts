@@ -13,8 +13,9 @@ export class ContactService {
     return contacts;
   }
 
-  editContact() {
-
+  editContact(contacts) {
+    let newContacts = JSON.stringify(contacts);
+    localStorage.setItem('contacts', newContacts);
   }
 
   deleteContact(index) {
