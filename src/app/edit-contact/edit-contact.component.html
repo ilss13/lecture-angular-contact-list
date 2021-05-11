@@ -5,7 +5,7 @@
                 
                 <h2 class="text-center padding-top padding-bottom">Editar Contato</h2>
 
-                <form>
+                <form [formGroup]="contactForm">
 
                     <div class="form-group">
                         <label for="type">Tipo de Contato</label>
@@ -22,7 +22,7 @@
 
                     <div class="form-group">
                         <label for="phone">Telefone</label>
-                        <input type="phone" class="form-control" id="phone" placeholder="Digite o telefone...">
+                        <input type="phone" class="form-control" id="phone"  placeholder="Digite o telefone...">
                     </div>
                     
                   </form>

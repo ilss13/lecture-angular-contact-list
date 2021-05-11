@@ -20,7 +20,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let contact of contacts, let i = index">
-                        <th scope="row"><i class="fas fa-user-tie"></i></th>
+                        <th scope="row"><i class="fas" [ngClass]="{'fa-user-tie':contact.type == 'profissional', 'fa-users':contact.type == 'pessoal'}"></i></th>
                         <td>{{contact.name}}</td>
                         <td>{{contact.phone}}</td>
                         <td>
