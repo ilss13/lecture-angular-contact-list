@@ -7,7 +7,7 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
 const routes: Routes = [
   {path: 'contacts', component: ContactsComponent},
   {path: 'add-contact', component: AddContactComponent},
-  {path: 'edit-contact', component: EditContactComponent},
+  {path: 'edit-contact/:id', component: EditContactComponent},
   {path: '**', component: ContactsComponent }
 ];
 
