@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Contact } from '../shared/models/contact';
 import { ContactService } from '../shared/services/contact.service';
 
@@ -11,7 +12,8 @@ import { ContactService } from '../shared/services/contact.service';
 export class AddContactComponent implements OnInit {
 
   constructor(
-    public contactService: ContactService
+    public contactService: ContactService,
+    public route: Router
   ) { }
 
   contactForm = new FormGroup({
@@ -27,6 +29,7 @@ export class AddContactComponent implements OnInit {
 
     let contact: Contact = this.contactForm.value;
     this.contactService.saveContact(contact);
+    this.route.navigate(['']);
     
   }
 

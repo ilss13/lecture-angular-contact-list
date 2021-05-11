@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Contact } from '../shared/models/contact';
+import { ContactService } from '../shared/services/contact.service';
 
 @Component({
   selector: 'app-edit-contact',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditContactComponent implements OnInit {
 
-  constructor() { }
+  private contact: Contact;
+
+  constructor(
+    private contactService: ContactService
+  ) { }
+
+  @Input() index;
 
   ngOnInit(): void {
+    let contacts = this.contactService.getContacts();
+    this.contact = contacts.splice(this.index, 1);
   }
 
 }

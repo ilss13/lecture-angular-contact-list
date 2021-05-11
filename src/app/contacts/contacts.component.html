@@ -19,33 +19,16 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr *ngFor="let contact of contacts, let i = index">
                         <th scope="row"><i class="fas fa-user-tie"></i></th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.phone}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary margin-right"><i class="fas fa-edit"></i></button> 
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            <button type="button" class="btn btn-primary margin-right" (click)="editContact(i)"><i class="fas fa-edit"></i></button> 
+                            <button type="button" class="btn btn-danger" (click)="deleteContact(i)"><i class="fas fa-trash-alt"></i></button>
                         </td>
                       </tr>
-                      <tr>
-                        <th scope="row"><i class="fas fa-users"></i></th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>
-                            <button type="button" class="btn btn-primary margin-right"><i class="fas fa-edit"></i></button> 
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><i class="fas fa-users"></i></th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>
-                            <button type="button" class="btn btn-primary margin-right"><i class="fas fa-edit"></i></button> 
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                      </tr>
+                     
                     </tbody>
                   </table>
 

@@ -8,10 +8,29 @@ export class ContactService {
 
   constructor() { }
 
+  getContacts() {
+    let contacts = JSON.parse(localStorage.getItem('contacts'));
+    return contacts;
+  }
+
+  editContact() {
+
+  }
+
+  deleteContact(index) {
+    
+    let contacts = JSON.parse(localStorage.getItem('contacts'));
+    contacts.splice(index, 1);
+    let newContacts = JSON.stringify(contacts);
+    localStorage.setItem('contacts', newContacts);
+
+  }
+
   saveContact(contact: Contact) {
 
-    let contactsLocal: Contact[];
+    let contactsLocal;
     let newContacts;
+    let newContact;
 
     if (localStorage.hasOwnProperty("contacts")) {
 
@@ -20,8 +39,8 @@ export class ContactService {
       newContacts = JSON.stringify(contactsLocal);
 
     } else {
-
-      newContacts = new Array(JSON.stringify(contact));
+      newContact = new Array(contact);
+      newContacts = JSON.stringify(newContact);
       
     }
 
